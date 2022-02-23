@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Store_ConsoleApp.Menu;
+using System;
 
 namespace Store_ConsoleApp
 {
@@ -6,7 +7,8 @@ namespace Store_ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ConsoleMenu consoleMenu = new();
+            consoleMenu.ShowMenu();
         }
     }
 }
