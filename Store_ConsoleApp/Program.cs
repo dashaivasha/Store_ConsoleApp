@@ -1,5 +1,4 @@
 ﻿using Store_ConsoleApp.Menu;
-using System;
 
 namespace Store_ConsoleApp
 {

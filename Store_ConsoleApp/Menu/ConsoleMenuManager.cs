@@ -1,9 +1,7 @@
-﻿using Store_ConsoleApp.Menu.Menu_Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Store_ConsoleApp.Data;
+using Store_ConsoleApp.Menu.Menu_Options;
+using Store_ConsoleApp.Menu.Menu_Options.Profile;
 using static Console_store.Menu.Enums.MenuItem;
 
 namespace Store_ConsoleApp.Menu
@@ -12,30 +10,43 @@ namespace Store_ConsoleApp.Menu
     {
         public static void CheckChoiseAndRun(int actions)
         {
-                switch (actions)
-                {
-                    case (int)MenuItems.Store:
+            ConsoleMenu consoleMenu = new();
 
-                        break;
-                    case (int)MenuItems.Basket:
+            switch (actions)
+            {
 
-                        break;
-                    case (int)MenuItems.Profile:
-                    //Profile profile = new Profile();
-                    //profile.ShowMenu();
-                        break;
-                    case (int)MenuItems.Login:
-
-                        break;
-                    case (int)MenuItems.CreateNewUser:
+                case (int)MenuItems.Store:
+                    ShowDefaultValue(MenuItems.Store);
+                    consoleMenu.ShowMenu();
+                    break;
+                case (int)MenuItems.Basket:
+                    ShowDefaultValue(MenuItems.Basket);
+                    consoleMenu.ShowMenu();
+                    break;
+                case (int)MenuItems.Profile:
+                    Profile profile = new Profile();
+                    profile.ShowMenu(MenuItems.Profile);
+                    consoleMenu.ShowMenu();
+                    break;
+                case (int)MenuItems.Login:
+                    User.LoginUser();
+                    consoleMenu.ShowMenu();
+                    break;
+                case (int)MenuItems.CreateNewUser:
                     NewUser user = new NewUser();
-                    user.ShowMenu();
-                        break;
-                    case (int)MenuItems.Exit:
-                        Environment.Exit(0);
-                        break;
-                }
+                    user.ShowMenu(MenuItems.CreateNewUser);
+                    consoleMenu.ShowMenu();
+                    break;
+                case (int)MenuItems.Exit:
+                    DataManagerJson.ExitCurrentUser();
+                    Environment.Exit(0);
+                    break;
             }
         }
-    }
 
+        private static void ShowDefaultValue(MenuItems menu)
+        {
+            Console.WriteLine($"Realization *{menu.GetDescription()}* still in progress");
+        }
+    }
+}

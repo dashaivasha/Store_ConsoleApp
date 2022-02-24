@@ -1,17 +1,19 @@
-﻿using Store_ConsoleApp.Interfaces;
-using System;
+﻿using System;
+using Store_ConsoleApp.Data;
 using System.Text;
 using static Console_store.Menu.Enums.MenuItem;
 
 namespace Store_ConsoleApp.Menu
 {
-    public class ConsoleMenu : IMenu
+    public class ConsoleMenu
     {
         private static int _userChoice;
+
         public void ShowMenu()
         {
             try
             {
+                DataManagerJson.CheckUser();
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine("Please enter a number to choose your action");

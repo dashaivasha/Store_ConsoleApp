@@ -10,7 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Menu\Menu Options\Profile\" />
+    <Folder Include="Menu\Menu Options\Basket\" />
+    <Folder Include="Menu\Menu Options\Store\" />
   </ItemGroup>
 
 </Project>
