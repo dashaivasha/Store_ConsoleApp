@@ -1,9 +1,10 @@
 ﻿using System;
-using Store_ConsoleApp.Data;
-using Store_ConsoleApp.Interfaces;
+using StoreConsoleApp.Data;
+using StoreConsoleApp.Interfaces;
+using StoreConsoleApp.MenuOptions;
 using static Console_store.Menu.Enums.MenuItem;
 
-namespace Store_ConsoleApp.Menu.Menu_Options
+namespace StoreConsoleApp.Menu.Menu_Options
 {
     public class NewUser : IMenu
     {

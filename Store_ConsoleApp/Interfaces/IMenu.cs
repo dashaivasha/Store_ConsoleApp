@@ -1,6 +1,6 @@
 ﻿using static Console_store.Menu.Enums.MenuItem;
 
-namespace Store_ConsoleApp.Interfaces
+namespace StoreConsoleApp.Interfaces
 {
     public interface IMenu
     {

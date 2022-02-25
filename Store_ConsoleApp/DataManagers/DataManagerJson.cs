@@ -2,29 +2,29 @@
 using InternshipProject.ConsoleMenu;
 using System.Collections.Generic;
 using System.IO;
+using StoreConsoleApp.Menu.MenuOptions.Store;
+using StoreConsoleApp.MenuOptions;
 
-namespace Store_ConsoleApp.Data
+namespace StoreConsoleApp.Data
 {
     internal class DataManagerJson
     {
-        private static string workingDirectory = Environment.CurrentDirectory;
-        public static string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
 
         public static void NewUserToJson(List<User> users)
         {
-            var path = $"{projectDirectory}\\Data\\Userdata.json";
+            var path = $"{Globals.ProjectDirectory}\\Data\\UserData.json";
             DataSerializer.JsonSerialize(users, path);
         }
 
         public static void CurrentUserToJson(User user)
         {
-            var path = $"{projectDirectory}\\Data\\CurrentUser.json";
+            var path = $"{Globals.ProjectDirectory}\\Data\\CurrentUser.json";
             DataSerializer.JsonSerialize(user, path);
         }
 
         public static void ExitCurrentUser()
         {
-            var path = $"{projectDirectory}\\Data\\CurrentUser.json";
+            var path = $"{Globals.ProjectDirectory}\\Data\\CurrentUser.json";
             FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.ReadWrite);
             fileStream.SetLength(0);
             fileStream.Close();
@@ -32,7 +32,7 @@ namespace Store_ConsoleApp.Data
 
         public static bool CheckUser()
         {
-            var path = $"{projectDirectory}\\Data\\CurrentUser.json";
+            var path = $"{Globals.ProjectDirectory}\\Data\\CurrentUser.json";
             FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.ReadWrite);
 
             if (fileStream.Length == 0)
@@ -46,6 +46,12 @@ namespace Store_ConsoleApp.Data
             fileStream.Close();
 
             return true;
+        }
+
+        public static void NewProductToJson(List<Product> products)
+        {
+            var path = $"{Globals.ProjectDirectory}\\Data\\ProductData.json";
+            DataSerializer.JsonSerialize(products, path);
         }
     }
 }

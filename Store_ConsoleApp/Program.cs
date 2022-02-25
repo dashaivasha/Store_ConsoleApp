@@ -1,8 +1,9 @@
 ﻿using Store_ConsoleApp.Menu;
+using StoreConsoleApp.Menu;
 
-namespace Store_ConsoleApp
+namespace StoreConsoleApp
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {

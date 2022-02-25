@@ -9,11 +9,11 @@ namespace InternshipProject.ConsoleMenu
     {
         public static void JsonSerialize(object dataType, string filePath)
         {
-            Newtonsoft.Json.JsonSerializer jsonSerializer = new JsonSerializer();
-            StreamWriter sw = new StreamWriter(filePath);
-            JsonWriter jsonwr = new JsonTextWriter(sw);
-            jsonSerializer.Serialize(jsonwr, dataType);
-            jsonwr.Close();
+            var jsonSerializer = new JsonSerializer();
+            var sw = new StreamWriter(filePath);
+            var jsonWr = new JsonTextWriter(sw);
+            jsonSerializer.Serialize(jsonWr, dataType);
+            jsonWr.Close();
             sw.Close();
         }
 
@@ -24,8 +24,8 @@ namespace InternshipProject.ConsoleMenu
 
             if (File.Exists(filePath))
             {
-                StreamReader sr = new StreamReader(filePath);
-                JsonReader jsonReader = new JsonTextReader(sr);
+                var sr = new StreamReader(filePath);
+                var jsonReader = new JsonTextReader(sr);
                 obj = jsonSerializer.Deserialize(jsonReader) as JObject;
                 jsonReader.Close();
                 sr.Close();

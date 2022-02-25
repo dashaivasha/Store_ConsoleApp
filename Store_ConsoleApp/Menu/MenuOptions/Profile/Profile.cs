@@ -1,15 +1,16 @@
-﻿using Store_ConsoleApp.Data;
-using Store_ConsoleApp.Interfaces;
+﻿using StoreConsoleApp.Data;
+using StoreConsoleApp.Interfaces;
+using StoreConsoleApp.MenuOptions;
 using System;
 using static Console_store.Menu.Enums.MenuItem;
 
-namespace Store_ConsoleApp.Menu.Menu_Options.Profile
+namespace StoreConsoleApp.Menu.Menu_Options.Profile
 {
     internal class Profile : IMenu
     {
         public void ShowMenu(MenuItems item)
         {
-            if (DataManagerJson.CheckUser() == true)
+            if (DataManagerJson.CheckUser())
             {
                 Console.WriteLine($"Your choice: {item.GetDescription()}");
                 var user = User.GetUser();
