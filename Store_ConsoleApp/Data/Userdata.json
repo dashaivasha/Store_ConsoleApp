@@ -1,1 +1,58 @@
-[{"Login":"dasha","Password":"123","Email":"123mail@mail","IsAdmin":false,"Instanceid":"fc0552dd-80fe-4a20-ab16-9e209dc448f2"},{"Login":"dLogin","Password":"pasword123","Email":"ddd@mail.ru","IsAdmin":false,"Instanceid":"92f94941-07a3-4b4b-a48b-3a194794fbde"},{"Login":"lloneone","Password":"1234","Email":"onemail@mail","IsAdmin":false,"Instanceid":"6fec2ad1-9b5e-4ea9-b6fd-68044afdc16c"},{"Login":"Dasha","Password":"123456","Email":"dasha@mail","IsAdmin":true,"Instanceid":"add0f8de-3308-4d8d-94a3-175ebf398911"},{"Login":"Kate","Password":"pass123","Email":"kate@mail.ru","IsAdmin":true,"Instanceid":"a0054c66-f463-43e4-890e-631c8fe9365e"},{"Login":"Gleb","Password":"MyPassIsCoool","Email":"gleb@lovesyou.com","IsAdmin":false,"Instanceid":"4342b47f-a700-4c56-b9d2-5c6f6fcede66"},{"Login":"Dasha_ivasha","Password":"dasha_ivashapass","Email":"dasha@mail","IsAdmin":true,"Instanceid":"89573edb-d01a-4ace-ae40-d0ffd1a7381f"},{"Login":"dasha","Password":"dasha","Email":"dasha@dasha","IsAdmin":true,"Instanceid":"808f7a5f-6880-4f8c-accb-10c7f5cf7369"}]
+[
+  {
+    "Email": "123mail@mail",
+    "Instanceid": "5c7631d7-225e-402f-8fda-a6fea31e8cc4",
+    "IsAdmin": false,
+    "Login": "dasha",
+    "Password": "123"
+  },
+  {
+    "Login": "lloneone",
+    "Password": "1234",
+    "Email": "onemail@mail",
+    "IsAdmin": false,
+    "Instanceid": "ce5498ab-f7be-4c09-a6c2-f34f0bf726a6"
+  },
+  {
+    "Login": "Dasha",
+    "Password": "123456",
+    "Email": "dasha@mail",
+    "IsAdmin": true,
+    "Instanceid": "590a49e0-c78c-4355-93f0-ae4309542be0"
+  },
+  {
+    "Login": "Kate",
+    "Password": "pass123",
+    "Email": "kate@mail.ru",
+    "IsAdmin": true,
+    "Instanceid": "8836e301-8251-42ae-99c6-b0f986584083"
+  },
+  {
+    "Login": "Gleb",
+    "Password": "MyPassIsCoool",
+    "Email": "gleb@lovesyou.com",
+    "IsAdmin": false,
+    "Instanceid": "22d6b3b9-49b0-4217-9623-c101d9e1a983"
+  },
+  {
+    "Login": "Dasha_ivasha",
+    "Password": "dasha_ivashapass",
+    "Email": "dasha@mail",
+    "IsAdmin": true,
+    "Instanceid": "b64e732c-39e2-4a83-913c-e39407988695"
+  },
+  {
+    "Login": "dasha",
+    "Password": "dasha",
+    "Email": "dasha@dasha",
+    "IsAdmin": true,
+    "Instanceid": "b62a7b04-ecf5-444e-89e8-c42ee0344ae4"
+  },
+  {
+    "Login": "dasha",
+    "Password": "123",
+    "Email": "11",
+    "IsAdmin": false,
+    "Instanceid": "1e0f9965-16b9-46c6-9b67-55c31b187b87"
+  }
+]

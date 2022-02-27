@@ -1,1 +1,26 @@
-[{"Name":"Kettle","Description":"super cute red kettle","Price":124.90,"Amount":7,"IsInBusket":false,"Id":1},{"Name":"Calyx","Description":"mini cute calyx for fun tea party","Price":22.70,"Amount":900,"IsInBusket":false,"Id":1}]
+[
+  {
+    "Name": "Kettle",
+    "Description": "super cute red kettle",
+    "Price": 123.123,
+    "Amount": 7,
+    "IsInBusket": false,
+    "Instanceid": "cf648dd8-ef5e-4125-a1a4-fe09d6df94c1"
+  },
+  {
+    "Amount": 900,
+    "Description": "mini cute calyx for fun tea party",
+    "Instanceid": "ce653e88-89bb-4373-b19c-6a56cae8b549",
+    "IsInBusket": false,
+    "Name": "Calyx",
+    "Price": 22.70
+  },
+  {
+    "Name": "The wizard's hat",
+    "Description": "A bit of funny hat",
+    "Price": 300.0,
+    "Amount": 20,
+    "IsInBusket": false,
+    "Instanceid": "667e97b6-73bb-4550-9ae9-83f03ffd55bb"
+  }
+]

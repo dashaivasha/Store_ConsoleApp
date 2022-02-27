@@ -1,5 +1,4 @@
-﻿using Store_ConsoleApp.Menu;
-using StoreConsoleApp.Menu;
+﻿using StoreConsoleApp.Menu;
 
 namespace StoreConsoleApp
 {

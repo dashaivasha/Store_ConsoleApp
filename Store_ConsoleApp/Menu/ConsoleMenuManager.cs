@@ -1,5 +1,4 @@
 ﻿using System;
-using Store_ConsoleApp.Menu;
 using StoreConsoleApp.Data;
 using StoreConsoleApp.Menu.Menu_Options;
 using StoreConsoleApp.Menu.Menu_Options.Profile;
@@ -64,11 +63,11 @@ namespace StoreConsoleApp.Menu
                     consoleMenu.ShowMenu();
                     break;
                 case (int)AdminMenu.DeleteProduct:
-                    ShowDefaultValue(AdminMenu.DeleteProduct);
+                    Product.DeleteProduct();
                     consoleMenu.ShowMenu();
                     break;
                 case (int)AdminMenu.ChangeProductPrice:
-                    ShowDefaultValue(AdminMenu.DeleteProduct);
+                    Product.ChangeProduct();
                     consoleMenu.ShowMenu();
                     break;
                 case (int)AdminMenu.ShowUsers:
@@ -81,7 +80,7 @@ namespace StoreConsoleApp.Menu
                     consoleMenu.ShowMenu();
                     break;
                 case (int)AdminMenu.DeleteUser:
-                    ShowDefaultValue(AdminMenu.DeleteUser);
+                    User.DeleteUser();
                     consoleMenu.ShowMenu();
                     break;
                 case (int)AdminMenu.Exit:

@@ -2,11 +2,10 @@
 using InternshipProject.ConsoleMenu;
 using Newtonsoft.Json;
 using StoreConsoleApp.Menu;
+using StoreConsoleApp.Data;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using StoreConsoleApp.Data;
-using Store_ConsoleApp.Menu;
 
 namespace StoreConsoleApp.MenuOptions
 {
@@ -96,9 +95,11 @@ namespace StoreConsoleApp.MenuOptions
             var path = $"{Globals.ProjectDirectory}\\Data\\UserData.json";
             var json = File.ReadAllText(path);
             Users = JsonConvert.DeserializeObject<IEnumerable<User>>(json).ToList();
+            var indexOfChoice = 0;
+
             foreach (var user in Users)
             {
-                user.ShowUser();
+                user.ShowUser(++indexOfChoice);
             }
         }
 
@@ -108,24 +109,45 @@ namespace StoreConsoleApp.MenuOptions
             var user = DataSerializer.JsonDeserialize(typeof(User), path) as User;
             return user;
         }
+
+        public static void DeleteUser()
+        {
+            try
+            {
+                GetUsers();
+                Console.WriteLine("Enter the user number");
+                var userIndex = Convert.ToInt32(Console.ReadLine());
+                Users.RemoveAt(userIndex - 1);
+                DataManagerJson.NewUserToJson(Users);
+                Console.WriteLine("User removed");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         public static bool CheckIsUserAdmin()
         {
             var path = $"{Globals.ProjectDirectory}\\Data\\CurrentUser.json";
             var user = DataSerializer.JsonDeserialize(typeof(User), path) as User;
+
             if (user.IsAdmin)
             {
                 Console.WriteLine("Hi, Admin! You can see administrator menu below");
+
                 return true;
             }
             else
             {
                 return false;
             }
+
         }
 
-        public void ShowUser()
+        public void ShowUser(int index)
         {
-            Console.WriteLine($"Login: {Login}, Password {Password}, Email: {Email}, IsAdmin: {IsAdmin}");
+            Console.WriteLine($"{index}) Login: {Login}, Password {Password}, Email: {Email}, IsAdmin: {IsAdmin}");
         }
     }
 }
