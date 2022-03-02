@@ -1,8 +1,7 @@
 ﻿using System;
-using InternshipProject.ConsoleMenu;
 using Newtonsoft.Json;
-using StoreConsoleApp.Menu;
 using StoreConsoleApp.Data;
+using StoreConsoleApp.Menu;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace StoreConsoleApp.MenuOptions
     public class User
     {
         public static List<User> Users = new List<User>();
-        public Guid Instanceid { get; private set; }
+        public Guid Instanceid { get; set; }
         public string Login;
         public string Password;
         public string Email;
@@ -47,6 +46,8 @@ namespace StoreConsoleApp.MenuOptions
             User user = new(login, password, email, isAdmin);
             GetUsers();
             Users.Add(user);
+            DataManagerJson.ExitCurrentUser();
+            DataManagerJson.ExitCurrentBasket();
             DataManagerJson.NewUserToJson(Users);
             DataManagerJson.CurrentUserToJson(user);
         }
@@ -72,6 +73,8 @@ namespace StoreConsoleApp.MenuOptions
 
             if (CurrentUser.Password == password)
             {
+                DataManagerJson.ExitCurrentUser();
+                DataManagerJson.ExitCurrentBasket();
                 Console.WriteLine("You are authorized");
                 DataManagerJson.CurrentUserToJson(CurrentUser);
                 var menu = new ConsoleMenu();
@@ -85,15 +88,13 @@ namespace StoreConsoleApp.MenuOptions
 
         public static void GetUsers()
         {
-            var path = $"{Globals.ProjectDirectory}\\Data\\UserData.json";
-            var json = File.ReadAllText(path);
+            var json = File.ReadAllText(Globals.UserPath);
             Users = JsonConvert.DeserializeObject<IEnumerable<User>>(json).ToList();
         }
 
         public static void GetAndShowUsers()
         {
-            var path = $"{Globals.ProjectDirectory}\\Data\\UserData.json";
-            var json = File.ReadAllText(path);
+            var json = File.ReadAllText(Globals.UserPath);
             Users = JsonConvert.DeserializeObject<IEnumerable<User>>(json).ToList();
             var indexOfChoice = 0;
 
@@ -105,8 +106,7 @@ namespace StoreConsoleApp.MenuOptions
 
         public static User GetUser()
         {
-            var path = $"{Globals.ProjectDirectory}\\Data\\CurrentUser.json";
-            var user = DataSerializer.JsonDeserialize(typeof(User), path) as User;
+            var user = DataSerializer.JsonDeserialize(typeof(User), Globals.CurrentUser) as User;
             return user;
         }
 
@@ -129,8 +129,7 @@ namespace StoreConsoleApp.MenuOptions
 
         public static bool CheckIsUserAdmin()
         {
-            var path = $"{Globals.ProjectDirectory}\\Data\\CurrentUser.json";
-            var user = DataSerializer.JsonDeserialize(typeof(User), path) as User;
+            var user = DataSerializer.JsonDeserialize(typeof(User), Globals.CurrentUser) as User;
 
             if (user.IsAdmin)
             {

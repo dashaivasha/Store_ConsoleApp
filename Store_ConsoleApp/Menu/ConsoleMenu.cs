@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Text;
-using static Console_store.Menu.Enums.MenuItem;
 using StoreConsoleApp.Data;
+using StoreConsoleApp.Enums;
 using StoreConsoleApp.MenuOptions;
 using static StoreConsoleApp.Enums.AdminMenus;
+using static StoreConsoleApp.Enums.MenuItem;
 
 namespace StoreConsoleApp.Menu
 {
@@ -23,9 +24,9 @@ namespace StoreConsoleApp.Menu
                         Console.ForegroundColor = ConsoleColor.Black;
                         Console.WriteLine("Please enter a number to choose your action");
                         var indexChoice = 1;
-                        StringBuilder stringBuilderAdmin = new StringBuilder();
+                        var  stringBuilderAdmin = new StringBuilder();
 
-                        foreach (AdminMenu action in AdminMenu.GetValues(typeof(AdminMenu)))
+                        foreach (AdminMenu action in Enum.GetValues(typeof(AdminMenu)))
                         {
                             stringBuilderAdmin.Append(indexChoice++ + " - " + action.GetDescription() + "\n");
                         }
@@ -45,30 +46,30 @@ namespace StoreConsoleApp.Menu
                         }
                     }
                 }
-                        Console.BackgroundColor = ConsoleColor.White;
-                        Console.ForegroundColor = ConsoleColor.Black;
-                        Console.WriteLine("Please enter a number to choose your action");
-                        var indexOfChoice = 1;
-                        StringBuilder stringBuilder = new StringBuilder();
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine("Please enter a number to choose your action");
+                var indexOfChoice = 1;
+                var stringBuilder = new StringBuilder();
 
-                        foreach (MenuItems action in MenuItems.GetValues(typeof(MenuItems)))
-                        {
-                            stringBuilder.Append(indexOfChoice++ + " - " + action.GetDescription() + "\n");
-                        }
+                foreach (MenuItems action in Enum.GetValues(typeof(MenuItems)))
+                {
+                    stringBuilder.Append(indexOfChoice++ + " - " + action.GetDescription() + "\n");
+                }
 
-                        Console.WriteLine(stringBuilder.ToString());
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.ForegroundColor = ConsoleColor.White;
-                        _userChoice = Convert.ToInt32(Console.ReadLine());
-                        try
-                        {
-                            ConsoleMenuManager.CheckChoiceAndRun(_userChoice);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.Message);
-                            ShowMenu();
-                        }
+                Console.WriteLine(stringBuilder.ToString());
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                _userChoice = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    ConsoleMenuManager.CheckChoiceAndRun(_userChoice);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    ShowMenu();
+                }
             }
             catch (IndexOutOfRangeException)
             {

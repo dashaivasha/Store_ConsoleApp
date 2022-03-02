@@ -1,8 +1,7 @@
 ﻿using System;
-using StoreConsoleApp.Data;
 using StoreConsoleApp.Interfaces;
 using StoreConsoleApp.MenuOptions;
-using static Console_store.Menu.Enums.MenuItem;
+using static StoreConsoleApp.Enums.MenuItem;
 
 namespace StoreConsoleApp.Menu.Menu_Options
 {

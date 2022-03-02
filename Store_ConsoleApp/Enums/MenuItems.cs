@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace Console_store.Menu.Enums
+namespace StoreConsoleApp.Enums
 {
     public static class MenuItem
     {

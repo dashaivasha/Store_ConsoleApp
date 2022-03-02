@@ -1,11 +1,13 @@
-﻿using System;
-using StoreConsoleApp.Data;
+﻿using StoreConsoleApp.Data;
+using StoreConsoleApp.Enums;
 using StoreConsoleApp.Menu.Menu_Options;
 using StoreConsoleApp.Menu.Menu_Options.Profile;
+using StoreConsoleApp.Menu.MenuOptions.Basket;
 using StoreConsoleApp.Menu.MenuOptions.Store;
 using StoreConsoleApp.MenuOptions;
-using static Console_store.Menu.Enums.MenuItem;
+using System;
 using static StoreConsoleApp.Enums.AdminMenus;
+using static StoreConsoleApp.Enums.MenuItem;
 
 namespace StoreConsoleApp.Menu
 {
@@ -23,7 +25,8 @@ namespace StoreConsoleApp.Menu
                     consoleMenu.ShowMenu();
                     break;
                 case (int)MenuItems.Basket:
-                    ShowDefaultValue(MenuItems.Basket);
+                    var basket = new BasketMenu();
+                    basket.ShowMenu(MenuItems.Basket);
                     consoleMenu.ShowMenu();
                     break;
                 case (int)MenuItems.Profile:

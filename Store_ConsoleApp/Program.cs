@@ -6,7 +6,7 @@ namespace StoreConsoleApp
     {
         static void Main(string[] args)
         {
-            ConsoleMenu consoleMenu = new();
+            var consoleMenu = new ConsoleMenu();
             consoleMenu.ShowMenu();
         }
     }

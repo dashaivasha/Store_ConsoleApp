@@ -1,4 +1,4 @@
-﻿using static Console_store.Menu.Enums.MenuItem;
+﻿using static StoreConsoleApp.Enums.MenuItem;
 
 namespace StoreConsoleApp.Interfaces
 {

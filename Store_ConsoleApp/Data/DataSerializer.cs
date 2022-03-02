@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 
-namespace InternshipProject.ConsoleMenu
+namespace StoreConsoleApp.Data
 {
     public class DataSerializer
     {
@@ -20,7 +20,7 @@ namespace InternshipProject.ConsoleMenu
         public static object JsonDeserialize(Type dataType, string filePath)
         {
             JObject obj = null;
-            JsonSerializer jsonSerializer = new();
+            var jsonSerializer = new JsonSerializer();
 
             if (File.Exists(filePath))
             {
