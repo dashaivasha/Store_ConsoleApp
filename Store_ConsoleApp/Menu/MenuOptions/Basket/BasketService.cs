@@ -25,7 +25,7 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
             }
             else
             {
-                Console.WriteLine("No items in the basket, you can add them in the Store");
+                Console.WriteLine("Basket is empty. Go to the Store");
             }
         }
 
@@ -49,17 +49,22 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
                 }
                 else
                 {
-                    Console.WriteLine("No items in the basket, go to Store");
+                    Console.WriteLine("Basket is empty");
                 }
             }
         }
 
-        public static void CreateBasket(int index)
+        public static void CreateBasket(Guid CurrentProduct)
         {
             var user = DataSerializer.JsonDeserialize(typeof(User), Globals.CurrentUser) as User;
-            var CurrentProduct = Product.Products[index - 1].InstanceId;
+            var productAndCount = new ProductAndCount();
             CurrentBasket.ProductsInBasket.Clear();
-            CurrentBasket.ProductsInBasket.Add(CurrentProduct);
+            productAndCount.Item = CurrentProduct;
+            Console.WriteLine("Enter count of the product");
+            int count = Convert.ToInt32(Console.ReadLine());
+
+            productAndCount.Count = count;
+            CurrentBasket.ProductsInBasket.Add(productAndCount);
             CurrentBasket.UserId = user.Instanceid;
             Baskets.Add(CurrentBasket);
             DataManagerJson.CurrentBasketToJson(CurrentBasket);
@@ -74,15 +79,29 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
             Console.WriteLine("Enter the product number");
             var productIndex = Convert.ToInt32(Console.ReadLine());
             var CurrentProduct = Product.Products[productIndex - 1].InstanceId;
-
             if (DataManagerJson.CheckBasket() == false && IsThisBasketExist() == false)
             {
-                CreateBasket(productIndex);
+                CreateBasket(CurrentProduct);
             }
             else if (DataManagerJson.CheckBasket() == true && IsThisBasketExist() == true || DataManagerJson.CheckBasket() == false && IsThisBasketExist() == true)
             {
                 var currentBasket = Baskets.Find((basket) => basket.UserId == user.Instanceid);
-                currentBasket.ProductsInBasket.Add(CurrentProduct);
+                var productAndCount = new ProductAndCount();
+                int count;
+                if (IsThisProductExist(CurrentProduct))
+                {
+                    var item = currentBasket.ProductsInBasket.Find((item) => item.Item == CurrentProduct);
+                    count = ++item.Count;
+                    currentBasket.ProductsInBasket.Remove(item);
+                }
+                else
+                {
+                    Console.WriteLine("Enter count of the product");
+                    count = Convert.ToInt32(Console.ReadLine());
+                }
+                productAndCount.Count = count;
+                productAndCount.Item = CurrentProduct;
+                currentBasket.ProductsInBasket.Add(productAndCount);
                 currentBasket.UserId = user.Instanceid;
                 DataManagerJson.CurrentBasketToJson(currentBasket);
                 DeleteBasket();
@@ -114,7 +133,7 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
 
             foreach (var productId in basket.ProductsInBasket)
             {
-                var currentProduct = Product.Products.Find((product) => product.InstanceId == productId);
+                var currentProduct = Product.Products.Find((product) => product.InstanceId == productId.Item);
                 products.Add(currentProduct);
             }
 
@@ -135,16 +154,74 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
             {
                 return true;
             }
+
+        }
+
+        public static bool IsThisProductExist(Guid itemToBeAdded)
+        {
+            var basket = DataSerializer.JsonDeserialize(typeof(Basket), Globals.CurrentBasket) as Basket;
+            var productCheck = basket.ProductsInBasket.Find((product) => product.Item == itemToBeAdded);
+
+            if (productCheck == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
 
         public static void GetCurrentProductsListInBasketAndShow()
         {
             GetCurrentProductsListInBasket();
+            var basket = DataSerializer.JsonDeserialize(typeof(Basket), Globals.CurrentBasket) as Basket;
             var index = 0;
 
             foreach (var product in currentBasketProducts)
             {
-                product.ShowProductInBasket(++index);
+                var counts = basket.ProductsInBasket.Find((productForGetCount) => productForGetCount.Item == product.InstanceId);
+                product.ShowProductInBasket(++index, counts.Count);
+            }
+
+            FinalCost();
+        }
+
+        public static void FinalCost()
+        {
+            GetCurrentProductsListInBasket();
+            var basket = DataSerializer.JsonDeserialize(typeof(Basket), Globals.CurrentBasket) as Basket;
+            decimal sum = 0;
+
+            for (var i = 0; i < currentBasketProducts.Count(); i++)
+            {
+                var counts = basket.ProductsInBasket.Find((productForGetCount) => productForGetCount.Item == currentBasketProducts[i].InstanceId);
+                sum = sum + currentBasketProducts[i].Price * counts.Count;
+            }
+
+            Console.WriteLine($"Final cost: " + sum);
+        }
+
+        public static void DeleteProductFromBasket()
+        {
+            try
+            {
+                var basket = DataSerializer.JsonDeserialize(typeof(Basket), Globals.CurrentBasket) as Basket;
+                Console.WriteLine("Enter the product number");
+                var productIndex = Convert.ToInt32(Console.ReadLine());
+                var CurrentProduct = currentBasketProducts[productIndex - 1].InstanceId;
+                var item = basket.ProductsInBasket.Find((item) => item.Item == CurrentProduct);
+                basket.ProductsInBasket.Remove(item);
+                DataManagerJson.CurrentBasketToJson(basket);
+                DeleteBasket();
+                Baskets.Add(basket);
+                DataManagerJson.NewBasketToJson(Baskets);
+                Console.WriteLine("product removed");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -14,17 +14,14 @@ namespace StoreConsoleApp.Menu.MenuOptions.Store
         public string Name;
         public string Description;
         public decimal Price;
-        public int Amount;
-        public bool IsInBusket;
 
-        public Product(string name, string description, decimal price, int amount, bool isInBasket)
+        public Product(string name, string description, decimal price, int amount)
         {
             InstanceId = Guid.NewGuid();
             Name = name;
             Description = description;
             Price = price;
-            Amount = amount;
-            IsInBusket = isInBasket;
+
         }
 
         public static void AddProduct()
@@ -35,9 +32,7 @@ namespace StoreConsoleApp.Menu.MenuOptions.Store
             var description = Console.ReadLine();
             Console.WriteLine("Enter the product price (using ',' for decimal value)");
             var price = Convert.ToDecimal(Console.ReadLine());
-            Console.WriteLine("Enter the product amount");
-            var amount = Convert.ToInt32(Console.ReadLine());
-            var product = new Product(name, description, price, amount, false);
+            var product = new Product(name, description, price, 0);
             GetProducts();
             Products.Add(product);
             DataManagerJson.NewProductToJson(Products);
@@ -100,12 +95,12 @@ namespace StoreConsoleApp.Menu.MenuOptions.Store
 
         public void ShowProduct(int indexOfChoice)
         {
-            Console.WriteLine($"{indexOfChoice}) | Name: {Name} | Description: {Description} | Price: {Price} | Amount: {Amount} | ");
+            Console.WriteLine($"{indexOfChoice}) | Name: {Name} | Description: {Description} | Price: {Price} | ");
         }
 
-        public void ShowProductInBasket(int indexOfChoice)
+        public void ShowProductInBasket(int indexOfChoice, int count)
         {
-            Console.WriteLine($"{indexOfChoice}) | Name: {Name} | Description: {Description} | Price: {Price} | ");
+            Console.WriteLine($"{indexOfChoice}) | Name: {Name} | Description: {Description} | Price: {Price} | Count: {count} ");
         }
     }
 }

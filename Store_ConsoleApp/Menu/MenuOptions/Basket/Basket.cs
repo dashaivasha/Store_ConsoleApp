@@ -7,9 +7,10 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
     {
         public Guid BasketId { get; set; }
         public Guid UserId;
-        public List<Guid> ProductsInBasket;
+        public List<ProductAndCount> ProductsInBasket;
 
-        public Basket(Guid basketId, Guid userId, List<Guid> products)
+
+        public Basket(Guid basketId, Guid userId, List<ProductAndCount> products)
         {
             BasketId = basketId;
             UserId = userId;
@@ -19,7 +20,7 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
         public Basket()
         {
             BasketId = Guid.NewGuid();
-            ProductsInBasket = new List<Guid>();
+            ProductsInBasket = new List<ProductAndCount>();
         }
     }
 }
