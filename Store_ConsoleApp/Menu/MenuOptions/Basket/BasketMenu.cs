@@ -1,6 +1,6 @@
-﻿using System;
-using StoreConsoleApp.Data;
+﻿using StoreConsoleApp.Data;
 using StoreConsoleApp.Interfaces;
+using System;
 using static StoreConsoleApp.Enums.MenuItem;
 
 namespace StoreConsoleApp.Menu.MenuOptions.Basket
@@ -9,7 +9,6 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
     {
         public void ShowMenu(MenuItems item)
         {
-
             if (DataManagerJson.CheckUser())
             {
                 Console.WriteLine($"Your choice: {item.GetDescription()}");

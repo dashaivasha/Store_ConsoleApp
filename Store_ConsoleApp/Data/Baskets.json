@@ -1,1 +1,12 @@
-[{"UserId":"eeb8af2d-13dd-4571-91ee-ed8cb8e1f4f5","ProductsInBasket":[{"Item":"ce653e88-89bb-4373-b19c-6a56cae8b549","Count":22},{"Item":"cf648dd8-ef5e-4125-a1a4-fe09d6df94c1","Count":11}],"BasketId":"a575fee9-b292-4104-8e59-7c0165affebc"},{"UserId":"e01eb88c-05db-49d8-9afc-673ea949bf7c","ProductsInBasket":[{"Item":"ce653e88-89bb-4373-b19c-6a56cae8b549","Count":2}],"BasketId":"16e32286-f55d-4342-9a4f-a11434b5c50f"}]
+[
+  {
+    "BasketId": "12978ced-91a5-4083-a0cf-7c7ab33862c9",
+    "ProductsInBasket": [
+      {
+        "Item": "cf648dd8-ef5e-4125-a1a4-fe09d6df94c1",
+        "Count": 2
+      }
+    ],
+    "UserId": "221cc4ab-2874-439b-b9ae-c054e8ee864a"
+  }
+]

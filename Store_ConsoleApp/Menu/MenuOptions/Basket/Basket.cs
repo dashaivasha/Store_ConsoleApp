@@ -9,7 +9,6 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
         public Guid UserId;
         public List<ProductAndCount> ProductsInBasket;
 
-
         public Basket(Guid basketId, Guid userId, List<ProductAndCount> products)
         {
             BasketId = basketId;

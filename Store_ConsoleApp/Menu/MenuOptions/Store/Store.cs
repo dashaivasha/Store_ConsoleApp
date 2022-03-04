@@ -1,8 +1,8 @@
-﻿using System;
-using StoreConsoleApp.Data;
+﻿using StoreConsoleApp.Data;
 using StoreConsoleApp.Interfaces;
 using StoreConsoleApp.Menu.MenuOptions.Basket;
 using StoreConsoleApp.Menu.MenuOptions.Store;
+using System;
 using static StoreConsoleApp.Enums.MenuItem;
 
 namespace StoreConsoleApp.Menu.Menu_Options.Profile
@@ -22,7 +22,6 @@ namespace StoreConsoleApp.Menu.Menu_Options.Profile
 
                 do
                 {
-
                     if (userChoice == 2)
                     {
                         break;
@@ -40,10 +39,8 @@ namespace StoreConsoleApp.Menu.Menu_Options.Profile
                     {
                         ++iteration;
                     }
-
                 }
                 while (iteration == 1);
-
             }
         }
     }

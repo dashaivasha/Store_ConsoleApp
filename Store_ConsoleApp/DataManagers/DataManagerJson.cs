@@ -15,7 +15,6 @@ namespace StoreConsoleApp.Data
         }
 
         public static void CurrentUserToJson(User user)
-
         {
             DataSerializer.JsonSerialize(user, Globals.CurrentUser); ;
         }

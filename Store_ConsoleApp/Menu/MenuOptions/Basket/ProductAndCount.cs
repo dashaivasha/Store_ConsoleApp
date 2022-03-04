@@ -2,7 +2,7 @@
 
 namespace StoreConsoleApp.Menu.MenuOptions.Basket
 {
-    class ProductAndCount
+    internal class ProductAndCount
     {
         public Guid Item;
         public int Count;

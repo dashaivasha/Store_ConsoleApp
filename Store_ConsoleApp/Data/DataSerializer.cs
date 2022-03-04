@@ -17,21 +17,30 @@ namespace StoreConsoleApp.Data
             sw.Close();
         }
 
+
+
         public static object JsonDeserialize(Type dataType, string filePath)
         {
-            JObject obj = null;
-            var jsonSerializer = new JsonSerializer();
-
-            if (File.Exists(filePath))
+            try
             {
-                var sr = new StreamReader(filePath);
-                var jsonReader = new JsonTextReader(sr);
-                obj = jsonSerializer.Deserialize(jsonReader) as JObject;
-                jsonReader.Close();
-                sr.Close();
-            }
+                JObject obj = null;
+                var jsonSerializer = new JsonSerializer();
 
-            return obj.ToObject(dataType);
+                if (File.Exists(filePath))
+                {
+                    var sr = new StreamReader(filePath);
+                    var jsonReader = new JsonTextReader(sr);
+                    obj = jsonSerializer.Deserialize(jsonReader) as JObject;
+                    jsonReader.Close();
+                    sr.Close();
+                }
+
+                return obj.ToObject(dataType);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using StoreConsoleApp.Data;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace StoreConsoleApp.Menu.MenuOptions.Store
 {
-    class Product
+    internal class Product
     {
         public static List<Product> Products = new List<Product>();
         public Guid InstanceId { get; set; }
@@ -21,7 +21,6 @@ namespace StoreConsoleApp.Menu.MenuOptions.Store
             Name = name;
             Description = description;
             Price = price;
-
         }
 
         public static void AddProduct()
@@ -70,12 +69,12 @@ namespace StoreConsoleApp.Menu.MenuOptions.Store
                 var productIndex = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter new product price");
                 var newPrice = Convert.ToDecimal(Console.ReadLine());
-                var CurrentProduct = Products[productIndex-1];
+                var CurrentProduct = Products[productIndex - 1];
                 CurrentProduct.Price = newPrice;
                 DataManagerJson.NewProductToJson(Products);
                 Console.WriteLine("Price changed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

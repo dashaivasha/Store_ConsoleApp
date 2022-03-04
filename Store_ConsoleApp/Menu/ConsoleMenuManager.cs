@@ -92,10 +92,5 @@ namespace StoreConsoleApp.Menu
                     break;
             }
         }
-
-        private static void ShowDefaultValue(Enum menu)
-        {
-            Console.WriteLine($"Realization *{menu.GetDescription()}* still in progress");
-        }
     }
 }

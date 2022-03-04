@@ -1,12 +1,12 @@
 ﻿using System;
+using Newtonsoft.Json;
+using StoreConsoleApp.Data;
+using StoreConsoleApp.Exceptions;
+using StoreConsoleApp.Menu.MenuOptions.Store;
+using StoreConsoleApp.MenuOptions;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
-using StoreConsoleApp.Data;
-using StoreConsoleApp.Menu.MenuOptions.Store;
-using StoreConsoleApp.MenuOptions;
-
 
 namespace StoreConsoleApp.Menu.MenuOptions.Basket
 {
@@ -25,7 +25,7 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
             }
             else
             {
-                Console.WriteLine("Basket is empty. Go to the Store");
+                Console.WriteLine("No one basket in the base");
             }
         }
 
@@ -154,7 +154,6 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
             {
                 return true;
             }
-
         }
 
         public static bool IsThisProductExist(Guid itemToBeAdded)
@@ -170,7 +169,6 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
             {
                 return true;
             }
-
         }
 
         public static void GetCurrentProductsListInBasketAndShow()
@@ -219,7 +217,7 @@ namespace StoreConsoleApp.Menu.MenuOptions.Basket
                 DataManagerJson.NewBasketToJson(Baskets);
                 Console.WriteLine("product removed");
             }
-            catch (Exception ex)
+            catch (BasketException ex)
             {
                 Console.WriteLine(ex.Message);
             }
