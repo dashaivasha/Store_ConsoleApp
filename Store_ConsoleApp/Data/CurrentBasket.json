@@ -1,0 +1,14 @@
+{
+  "BasketId": "42d67a63-aea0-4a14-a6d4-f933cc2b3e1c",
+  "ProductsInBasket": [
+    {
+      "Item": "cf648dd8-ef5e-4125-a1a4-fe09d6df94c1",
+      "Count": 2
+    },
+    {
+      "Item": "ce653e88-89bb-4373-b19c-6a56cae8b549",
+      "Count": 2
+    }
+  ],
+  "UserId": "1f36773b-1a46-44c1-8c88-89ab37ac6700"
+}

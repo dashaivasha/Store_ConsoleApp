@@ -1,12 +1,13 @@
-﻿using System;
+﻿using StoreConsoleApp.Menu;
 
-namespace Store_ConsoleApp
+namespace StoreConsoleApp
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var consoleMenu = new ConsoleMenu();
+            consoleMenu.ShowMenu();
         }
     }
 }
