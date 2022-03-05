@@ -3,7 +3,7 @@ using StoreConsoleApp.Interfaces;
 using StoreConsoleApp.MenuOptions;
 using static StoreConsoleApp.Enums.MenuItem;
 
-namespace StoreConsoleApp.Menu.Menu_Options
+namespace StoreConsoleApp.Menu.Menu_Options.CreateNewUser
 {
     public class NewUser : IMenu
     {

@@ -21,6 +21,7 @@ namespace StoreConsoleApp.Menu.Validation
             catch (FormatException ex)
             {
                 Console.WriteLine(ex.Message);
+
                 return false;
             }
         }
@@ -34,6 +35,7 @@ namespace StoreConsoleApp.Menu.Validation
                 do
                 {
                     ConsoleKeyInfo key = Console.ReadKey(true);
+
                     if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
                     {
                         EnteredVal += key.KeyChar;
@@ -62,6 +64,7 @@ namespace StoreConsoleApp.Menu.Validation
                             }
                         }
                     }
+
                 } while (true);
 
                 return EnteredVal;

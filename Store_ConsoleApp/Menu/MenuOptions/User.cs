@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using StoreConsoleApp.Data;
 using StoreConsoleApp.Menu;
 using StoreConsoleApp.Menu.Validation;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -71,24 +71,24 @@ namespace StoreConsoleApp.MenuOptions
             var login = Console.ReadLine();
             string enterText = "Please enter password: ";
             var enterPassword = Validation.CheckPassword(enterText);
-            var CurrentUser = Users.Find((user) => user.Login == login);
+            var currentUser = Users.Find((user) => user.Login == login);
 
             if (login == string.Empty || enterPassword == string.Empty)
             {
                 throw new Exception("Enter the values");
             }
 
-            if (CurrentUser == null)
+            if (currentUser == null)
             {
                 throw new Exception("User with this data was not found");
             }
-            String currentPassword = Validation.Decryption(CurrentUser.Password, "password");
+            String currentPassword = Validation.Decryption(currentUser.Password, "password");
             if (currentPassword == enterPassword)
             {
                 DataManagerJson.ExitCurrentUser();
                 DataManagerJson.ExitCurrentBasket();
                 Console.WriteLine("You are authorized");
-                DataManagerJson.CurrentUserToJson(CurrentUser);
+                DataManagerJson.CurrentUserToJson(currentUser);
                 var menu = new ConsoleMenu();
                 menu.ShowMenu();
             }
@@ -149,10 +149,7 @@ namespace StoreConsoleApp.MenuOptions
 
                 return true;
             }
-            else
-            {
                 return false;
-            }
         }
 
         public void ShowUser(int index)

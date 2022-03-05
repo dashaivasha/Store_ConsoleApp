@@ -1,11 +1,11 @@
-﻿using StoreConsoleApp.Data;
-using StoreConsoleApp.Enums;
-using StoreConsoleApp.Menu.Menu_Options;
+﻿using System;
+using StoreConsoleApp.Data;
+using StoreConsoleApp.Menu.Menu_Options.CreateNewUser;
 using StoreConsoleApp.Menu.Menu_Options.Profile;
+using StoreConsoleApp.Menu.Menu_Options.Store;
 using StoreConsoleApp.Menu.MenuOptions.Basket;
 using StoreConsoleApp.Menu.MenuOptions.Store;
 using StoreConsoleApp.MenuOptions;
-using System;
 using static StoreConsoleApp.Enums.AdminMenus;
 using static StoreConsoleApp.Enums.MenuItem;
 

@@ -52,7 +52,7 @@ namespace StoreConsoleApp.Menu.MenuOptions.Store
                 var productIndex = Convert.ToInt32(Console.ReadLine());
                 Products.RemoveAt(productIndex - 1);
                 DataManagerJson.NewProductToJson(Products);
-                Console.WriteLine("Poduct removed");
+                Console.WriteLine("Product removed");
             }
             catch (Exception ex)
             {
@@ -69,8 +69,8 @@ namespace StoreConsoleApp.Menu.MenuOptions.Store
                 var productIndex = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter new product price");
                 var newPrice = Convert.ToDecimal(Console.ReadLine());
-                var CurrentProduct = Products[productIndex - 1];
-                CurrentProduct.Price = newPrice;
+                var currentProduct = Products[productIndex - 1];
+                currentProduct.Price = newPrice;
                 DataManagerJson.NewProductToJson(Products);
                 Console.WriteLine("Price changed");
             }

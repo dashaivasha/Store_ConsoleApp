@@ -5,7 +5,7 @@ using StoreConsoleApp.Menu.MenuOptions.Store;
 using System;
 using static StoreConsoleApp.Enums.MenuItem;
 
-namespace StoreConsoleApp.Menu.Menu_Options.Profile
+namespace StoreConsoleApp.Menu.Menu_Options.Store
 {
     internal class Store : IMenu
     {
